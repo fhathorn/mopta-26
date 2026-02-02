@@ -1,0 +1,17 @@
+[project]
+name = "AIMMS_MOPTA_2026"
+version = "0.1.0"
+description = "Starter template for the AIMMS MOPTA competition 2026"
+requires-python = "==3.13.*"
+authors = [
+    {name = "Fergus Hathorn", email = "fergus.hathorn@aimms.com"},
+]
+dependencies = [
+    "aimmspy",
+    "pandas",
+    "openpyxl"
+]
+[tool.uv]
+python-preference = "managed"
+
+

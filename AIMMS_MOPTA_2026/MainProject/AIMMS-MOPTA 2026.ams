@@ -1,0 +1,180 @@
+## ams_version=1.0
+
+Model Main_AIMMS_MOPTA_2026 {
+	Section Raw_Input_Data {
+		Procedure ReadInputData {
+			Body: {
+				py::run_python_script("read_input_data.py");
+			}
+		}
+		DeclarationSection Location_Data {
+			Set Locations {
+				Index: l, l_from, l_to, sub_l;
+			}
+			Parameter LocationLat {
+				IndexDomain: l;
+			}
+			Parameter LocationLon {
+				IndexDomain: l;
+			}
+			StringParameter CarrierLocation {
+				IndexDomain: l;
+			}
+		}
+		DeclarationSection Order_Data {
+			Set OrderNumber {
+				Index: n;
+			}
+			StringParameter OrderDueDate {
+				IndexDomain: (n,l_from,l_to);
+			}
+		}
+		DeclarationSection Lane_Data {
+			Parameter LaneMileage {
+				IndexDomain: (l_from,l_to);
+			}
+			Parameter LaneCost {
+				IndexDomain: (l_from,l_to);
+			}
+		}
+	}
+	Section UI {
+		Section Workflow {
+			DeclarationSection Workflow_Declaration {
+				StringParameter MainWorkflow {
+					IndexDomain: (webui::indexWorkflowOrder,webui::indexWorkflowSpec);
+					Definition: {
+						data{
+							('1', 'title'): "Workflow"
+						}
+					}
+				}
+				StringParameter MainWorkflowSteps {
+					IndexDomain: (webui::indexWorkflowOrder,webui::indexNoOfPages,webui::indexWorkflowPageSpec);
+					Definition: {
+						{
+						  ( '1', 1, 'displayText'       ) : "Data",
+						  ( '1', 1, 'icon'              ) : "aimms-database-export",
+						  ( '1', 1, 'pageId'            ) : FormatString("%e", page_Data),
+						  ( '1', 1, 'tooltip'           ) : "",
+						  ( '1', 1, 'workflowPageState' ) : "Active",
+						  ( '1', 1, 'pageDataState'     ) : "",
+						  ( '1', 1, 'redirectPageId'    ) : "",
+						
+						  ( '1', 10, 'displayText'       ) : "Control Panel",
+						  ( '1', 10, 'icon'              ) : "aimms-cog",
+						  ( '1', 10, 'pageId'            ) : FormatString("%e", page_ControlPanel),
+						  ( '1', 10, 'tooltip'           ) : "",
+						  ( '1', 10, 'workflowPageState' ) : "Active",
+						  ( '1', 10, 'pageDataState'     ) : "",
+						  ( '1', 10, 'redirectPageId'    ) : "",
+						
+						  ( '1', 20, 'displayText'       ) : "Results",
+						  ( '1', 20, 'icon'              ) : "aimms-calculator",
+						  ( '1', 20, 'pageId'            ) : FormatString("%e", page_Results),
+						  ( '1', 20, 'tooltip'           ) : "",
+						  ( '1', 20, 'workflowPageState' ) : "Active",
+						  ( '1', 20, 'pageDataState'     ) : "",
+						  ( '1', 20, 'redirectPageId'    ) : ""
+						}
+					}
+				}
+				ElementParameter page_Data {
+					Range: webui::AllPageIds;
+					Definition: 'data';
+				}
+				ElementParameter page_ControlPanel {
+					Range: webui::AllPageIds;
+					Definition: 'control_panel';
+				}
+				ElementParameter page_Results {
+					Range: webui::AllPageIds;
+					Definition: 'results';
+				}
+			}
+		}
+		Section Map {
+			DeclarationSection Map_Declaration {
+				StringParameter Map_Icon {
+					IndexDomain: l;
+					Definition: "aimms-location";
+				}
+				Parameter Map_IconSize {
+					IndexDomain: l;
+					Definition: 5;
+				}
+			}
+		}
+		Section Page_Actions {
+			DeclarationSection Page_Action_Declaration {
+				StringParameter PA_DataUpload {
+					IndexDomain: webui::indexPageActionSpec;
+					Definition: {
+						{   ( 'displaytext' ) : "Upload Data",
+						    ( 'procedure' )   : "ReadInputData",
+						    ( 'state' )       : "active",
+						    ( 'icon' )        : "aimms-database"
+						}
+					}
+				}
+			}
+		}
+	}
+	Procedure MainInitialization {
+		Comment: "Add initialization statements here that do NOT require any library being initialized already.";
+	}
+	Procedure PostMainInitialization {
+		Body: {
+			! Specify nice translations for version identifiers as they are used in the UI.
+			webui::IdentifierElementText('l_from') := "From Location";
+			webui::IdentifierElementText('l_to') := "To Location";
+			webui::IdentifierElementText('CarrierLocation') := "Carrier Location";
+			webui::IdentifierElementText('LaneCost') := "Lane Cost";
+			webui::IdentifierElementText('LaneMileage') := "Lane Mileage";
+			webui::IdentifierElementText('OrderDueDate') := "Order Due Date";
+		}
+		Comment: {
+			"Add initialization statements here that require that the libraries are already initialized properly,
+			or add statements that require the Data Management module to be initialized."
+		}
+	}
+	Procedure MainExecution;
+	Procedure PreMainTermination {
+		Body: {
+			return DataManagementExit();
+		}
+		Comment: {
+			"Add termination statements here that require all libraries to be still alive.
+			Return 1 if you allow the termination sequence to continue.
+			Return 0 if you want to cancel the termination sequence."
+		}
+	}
+	Procedure MainTermination {
+		Body: {
+			return 1;
+		}
+		Comment: {
+			"Add termination statements here that do not require all libraries to be still alive.
+			Return 1 to allow the termination sequence to continue.
+			Return 0 if you want to cancel the termination sequence.
+			It is recommended to only use the procedure PreMainTermination to cancel the termination sequence and let this procedure always return 1."
+		}
+	}
+	Section Quantities_and_Units {
+		Comment: {
+			"This section contains all the units and quantities that are added automatically by AIMMS.
+			It is recommended to declare all your quantities here."
+		}
+		Quantity SI_Time_Duration {
+			BaseUnit: s;
+			Conversions: minute->s : #-># * 60;
+			Comment: {
+				"Expresses the value for the duration of periods.
+				
+				The unit s has been added automatically because it is a required unit for AimmsWebUI.
+				
+				The unit minute has been added automatically because it is a required unit for AimmsWebUI."
+			}
+		}
+	}
+}

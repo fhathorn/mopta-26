@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<References AIMMS_Version="25.9.6.1 (x64)">
+	<MainProject Path="MainProject" />
+	<Library System="true" Path="AimmsPro" />
+	<RepositoryLibrary UUID="69378F70-E906-486F-8F2C-1D606AEB9669" Name="WebUI" Version="25.9.3.4" />
+	<RepositoryLibrary UUID="5A2255CE-23DB-4CB2-85F9-F62B349FE944" Name="pyaimms" Version="25.3.1.1" />
+</References>

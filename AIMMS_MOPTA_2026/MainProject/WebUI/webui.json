@@ -1,0 +1,523 @@
+{
+  "application": {
+    "aimms.widget.type": {
+      "literal": "application"
+    },
+    "browser.language": {
+      "aimms": {
+        "contents": [
+          "webui::ClientBrowserLanguage"
+        ]
+      }
+    },
+    "browser.name": {
+      "aimms": {
+        "contents": [
+          "webui::ClientBrowserName"
+        ]
+      }
+    },
+    "browser.timezone": {
+      "aimms": {
+        "contents": [
+          "webui::BrowserTimeZone"
+        ]
+      }
+    },
+    "ignoredst": {
+      "aimms": {
+        "contents": [
+          "webui::IgnoreDST"
+        ]
+      }
+    },
+    "pages": {
+      "literal": {
+        "name": "root",
+        "slug": "root",
+        "children": [
+          {
+            "name": "Main Project",
+            "slug": "main_project",
+            "children": [
+              {
+                "name": "Data",
+                "type": "pagev2-grid",
+                "slug": "data",
+                "children": []
+              },
+              {
+                "name": "Control Panel",
+                "type": "pagev2-grid",
+                "slug": "control_panel",
+                "children": []
+              },
+              {
+                "name": "Results",
+                "type": "pagev2-grid",
+                "slug": "results",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "theme.classic": {
+      "literal": "NOT_ALLOWED"
+    },
+    "timezone": {
+      "aimms": {
+        "contents": [
+          "webui::DisplayTimeZone"
+        ]
+      }
+    },
+    "workflows.configuration": {
+      "literal": {
+        "identifier": "MainWorkflowSteps",
+        "slice": [
+          {
+            "index": "webui::indexWorkflowOrder",
+            "type": "free",
+            "value": "webui::indexWorkflowOrder"
+          },
+          {
+            "index": "webui::indexNoOfPages",
+            "type": "free",
+            "value": "webui::indexNoOfPages"
+          },
+          {
+            "index": "webui::indexWorkflowPageSpec",
+            "type": "free",
+            "value": "webui::indexWorkflowPageSpec"
+          }
+        ]
+      }
+    },
+    "workflows.information": {
+      "aimms": {
+        "contents": [
+          "MainWorkflow"
+        ],
+        "slices": [
+          {
+            "identifier": "MainWorkflow",
+            "slice": [
+              {
+                "index": "webui::indexWorkflowOrder",
+                "type": "free",
+                "value": "webui::indexWorkflowOrder"
+              },
+              {
+                "index": "webui::indexWorkflowSpec",
+                "type": "free",
+                "value": "webui::indexWorkflowSpec"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "version": "4.67.0",
+  "pages/results": {
+    "aimms.widget.type": {
+      "literal": "pagev2-grid"
+    },
+    "bindings": {
+      "literal": [
+        {
+          "widgetUri": "map",
+          "gridArea": "area-a",
+          "dndId": "Unassigned widgetsmap"
+        }
+      ]
+    },
+    "layoutId": {
+      "literal": "Layout11"
+    },
+    "widgets": {
+      "literal": [
+        {
+          "uri": "map",
+          "layoutInfo": {
+            "width": "2",
+            "height": "1"
+          }
+        }
+      ]
+    }
+  },
+  "widgets/map": {
+    "aimms.widget.type": {
+      "literal": "map-v2"
+    },
+    "center.latitude": {
+      "literal": 34.50474240302589
+    },
+    "center.longitude": {
+      "literal": -87.9157715004741
+    },
+    "name": {
+      "literal": "map"
+    },
+    "nodes.__display_order__": {
+      "literal": [
+        "nodes.0"
+      ]
+    },
+    "nodes.0": {
+      "aimms": {
+        "contents": [
+          "LocationLon",
+          "LocationLat",
+          "Map_IconSize",
+          "Map_Icon"
+        ],
+        "slices": [
+          {
+            "identifier": "LocationLon",
+            "slice": [
+              {
+                "index": "l",
+                "type": "free",
+                "value": "l"
+              }
+            ]
+          },
+          {
+            "identifier": "LocationLat",
+            "slice": [
+              {
+                "index": "l",
+                "type": "free",
+                "value": "l"
+              }
+            ]
+          },
+          {
+            "identifier": "Map_IconSize",
+            "slice": [
+              {
+                "index": "l",
+                "type": "free",
+                "value": "l"
+              }
+            ]
+          },
+          {
+            "identifier": "Map_Icon",
+            "slice": [
+              {
+                "index": "l",
+                "type": "free",
+                "value": "l"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "nodes.0.icon": {
+      "literal": {
+        "identifier": "Map_Icon",
+        "slice": [
+          {
+            "index": "l",
+            "type": "free",
+            "value": "l"
+          }
+        ]
+      }
+    },
+    "nodes.0.index": {
+      "literal": {
+        "identifier": "l"
+      }
+    },
+    "nodes.0.latitude": {
+      "literal": {
+        "identifier": "LocationLat",
+        "slice": [
+          {
+            "index": "l",
+            "type": "free",
+            "value": "l"
+          }
+        ]
+      }
+    },
+    "nodes.0.longitude": {
+      "literal": {
+        "identifier": "LocationLon",
+        "slice": [
+          {
+            "index": "l",
+            "type": "free",
+            "value": "l"
+          }
+        ]
+      }
+    },
+    "nodes.0.size": {
+      "literal": {
+        "identifier": "Map_IconSize",
+        "slice": [
+          {
+            "index": "l",
+            "type": "free",
+            "value": "l"
+          }
+        ]
+      }
+    },
+    "views": {
+      "literal": {}
+    },
+    "zoom": {
+      "literal": 4.524434619621811
+    }
+  },
+  "pages/data": {
+    "aimms.widget.type": {
+      "literal": "pagev2-grid"
+    },
+    "bindings": {
+      "literal": [
+        {
+          "widgetUri": "carrier_location",
+          "gridArea": "area-a",
+          "dndId": "area-acarrier_location0"
+        },
+        {
+          "widgetUri": "lane_data",
+          "gridArea": "area-a",
+          "dndId": "area-alane_data1"
+        },
+        {
+          "widgetUri": "order_data",
+          "gridArea": "area-b",
+          "dndId": "Unassigned widgetsorder_data"
+        }
+      ]
+    },
+    "layoutId": {
+      "literal": "Layout1"
+    },
+    "primarypageaction": {
+      "aimms": {
+        "contents": [
+          "PA_DataUpload"
+        ],
+        "slices": [
+          {
+            "identifier": "PA_DataUpload",
+            "slice": [
+              {
+                "index": "webui::indexPageActionSpec",
+                "type": "free",
+                "value": "webui::indexPageActionSpec"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "widgets": {
+      "literal": [
+        {
+          "uri": "carrier_location",
+          "layoutInfo": {
+            "width": "2",
+            "height": "1"
+          }
+        },
+        {
+          "uri": "lane_data",
+          "layoutInfo": {
+            "width": "2",
+            "height": "1"
+          }
+        },
+        {
+          "uri": "order_data",
+          "layoutInfo": {
+            "width": "2",
+            "height": "1"
+          }
+        }
+      ]
+    }
+  },
+  "widgets/carrier_location": {
+    "aimms.widget.type": {
+      "literal": "table"
+    },
+    "contents": {
+      "aimms": {
+        "contents": [
+          "CarrierLocation"
+        ]
+      }
+    },
+    "contents.partition": {
+      "literal": {
+        "rowHeader": [
+          "l"
+        ],
+        "colHeader": [
+          "<IDENTIFIER-SET>"
+        ],
+        "aggregated": []
+      }
+    },
+    "custom.column.widths": {
+      "literal": [
+        {
+          "type": "rowHeader",
+          "colKey": "l",
+          "width": 28.35
+        },
+        {
+          "type": "colHeader",
+          "colKey": {
+            "<IDENTIFIER-SET>": "CarrierLocation"
+          },
+          "width": 41
+        }
+      ]
+    },
+    "name": {
+      "literal": "carrier_location"
+    },
+    "title": {
+      "literal": "Carrier Locations"
+    },
+    "views": {
+      "literal": {}
+    }
+  },
+  "widgets/lane_data": {
+    "aimms.widget.type": {
+      "literal": "table"
+    },
+    "contents": {
+      "aimms": {
+        "contents": [
+          "LaneCost",
+          "LaneMileage"
+        ]
+      }
+    },
+    "contents.partition": {
+      "literal": {
+        "rowHeader": [
+          "l_from",
+          "l_to"
+        ],
+        "colHeader": [
+          "<IDENTIFIER-SET>"
+        ],
+        "aggregated": []
+      }
+    },
+    "custom.column.widths": {
+      "literal": [
+        {
+          "type": "rowHeader",
+          "colKey": "l_to",
+          "width": 34.52
+        },
+        {
+          "type": "rowHeader",
+          "colKey": "l_from",
+          "width": 29.79
+        },
+        {
+          "type": "colHeader",
+          "colKey": {
+            "<IDENTIFIER-SET>": "LaneCost"
+          },
+          "width": 27.7
+        },
+        {
+          "type": "colHeader",
+          "colKey": {
+            "<IDENTIFIER-SET>": "LaneMileage"
+          },
+          "width": 27.7
+        }
+      ]
+    },
+    "name": {
+      "literal": "lane_data"
+    },
+    "title": {
+      "literal": "Lane Data"
+    },
+    "views": {
+      "literal": {}
+    }
+  },
+  "widgets/order_data": {
+    "aimms.widget.type": {
+      "literal": "table"
+    },
+    "contents": {
+      "aimms": {
+        "contents": [
+          "OrderDueDate"
+        ]
+      }
+    },
+    "contents.partition": {
+      "literal": {
+        "rowHeader": [
+          "n",
+          "l_from",
+          "l_to"
+        ],
+        "colHeader": [
+          "<IDENTIFIER-SET>"
+        ],
+        "aggregated": []
+      }
+    },
+    "custom.column.widths": {
+      "literal": [
+        {
+          "type": "rowHeader",
+          "colKey": "n",
+          "width": 31.43
+        },
+        {
+          "type": "rowHeader",
+          "colKey": "l_from",
+          "width": 30.82
+        },
+        {
+          "type": "rowHeader",
+          "colKey": "l_to",
+          "width": 27.32
+        },
+        {
+          "type": "colHeader",
+          "colKey": {
+            "<IDENTIFIER-SET>": "OrderDueDate"
+          },
+          "width": 28.76
+        }
+      ]
+    },
+    "name": {
+      "literal": "order_data"
+    },
+    "title": {
+      "literal": "Order Data"
+    },
+    "views": {
+      "literal": {}
+    }
+  }
+}
