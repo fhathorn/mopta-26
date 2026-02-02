@@ -3,7 +3,7 @@ from singleton import my_aimms
 import pandas as pd
 
 # Set the input file path
-input_file_path = "AIMMS-MOPTA Interfor data v2.xlsx"
+input_file_path = "AIMMS-MOPTA Interfor data.xlsx"
 
 # Read all sheets from the input excel file
 input_data = pd.read_excel(input_file_path, sheet_name=None)
